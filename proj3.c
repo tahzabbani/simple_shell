@@ -186,31 +186,29 @@ int main(int argc, char *argv[]) {
         if (pid == 0) {
             *gottenPid = (long)getpid();
 
-        if(in)
+        if(in == 1)
         {   
-            int fd0;
-            if ((fd0 = open(input, O_CREAT | O_RDONLY, 0)) < 0) {
-                perror("Couldn't open input file");
+            int fdinput;
+            if ((fdinput = open(input, O_CREAT | O_RDONLY, 0)) < 0) {
+                perror("Error opening input file");
                 exit(0);
             }           
-            // dup2() copies content of fdo in input of preceeding file
-            dup2(fd0, 0);
+            dup2(fdinput, 0);
 
-            close(fd0); 
+            close(fdinput); 
         }
 
-        //if '>' char was found in string inputted by user 
-        if (out)
+        if (out == 1)
         {
 
-            int fd1 ;
-            if ((fd1 = open(output, O_CREAT | O_APPEND | O_WRONLY, 0755)) == -1) {
-                perror("Couldn't open the output file");
+            int fdout ;
+            if ((fdout = open(output, O_CREAT | O_APPEND | O_WRONLY, 0755)) == -1) {
+                perror("Error opening file");
                 exit(0);
             }           
 
-            dup2(fd1, 1);
-            close(fd1);
+            dup2(fdout, 1);
+            close(fdout);
         }
 
             execvp(cmd[0], cmd);
