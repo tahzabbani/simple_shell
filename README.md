@@ -34,10 +34,10 @@ Run the test cases by starting the shell typing any of the commands that are pro
 ## Screenshots
 
 - general commands
-<img src = "Screenshot_20191114_084101.png">
+<img src = "./screenshots/Screenshot_20191114_084101.png">
 
 - jobs command, typing ```continue < pid >``` will continue the yes process
-<img src = "Screenshot_20191114_084144.png">
+<img src = "./screenshots/Screenshot_20191114_084144.png">
 
 ## Contact Information
 
